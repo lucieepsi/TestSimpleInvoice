@@ -1,0 +1,10 @@
+name: fonction testRep2 return 2
+on: [push]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    
+  steps:
+    - run: echo "le test démarre"
+    - run: php bin/phpunit
+  
