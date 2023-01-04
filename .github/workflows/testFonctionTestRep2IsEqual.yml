@@ -1,10 +1,18 @@
 name: fonction testRep2 return 2
 on: [push]
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    
-  steps:
-    - run: echo "le test démarre"
-    - run: php bin/phpunit
-  
+    phpunit:
+        name: PHPUnit
+        runs-on: 'ubuntu-latest'
+
+        steps:
+            -   name: Setup PHP
+                with:
+                    php-version: '8.1'
+                    extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, redis
+
+            -   name: Run composer install
+                run: composer install composer.json
+
+            -   name: Run PHPUnit
+                run: bin/phpunit
