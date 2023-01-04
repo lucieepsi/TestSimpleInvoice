@@ -1,5 +1,5 @@
 <?php
 function testRep2(){
-    return 2;
+    return 1;
 }
 ?>
