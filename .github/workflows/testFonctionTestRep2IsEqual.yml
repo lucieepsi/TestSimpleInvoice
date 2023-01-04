@@ -6,10 +6,8 @@ jobs:
         runs-on: 'ubuntu-latest'
 
         steps:
-            -   name: Setup PHP
-                uses: actions/checkout@v1
-                with:
-                    php-version: '8.1'
+            -   run: echo "début du test"
+            -   uses: actions/checkout@v1
 
             -   name: Run composer install
                 run: composer install --no-progress --no-suggest
