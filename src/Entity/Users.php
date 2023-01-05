@@ -4,10 +4,15 @@ namespace App\Entity;
 
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
+#[ApiResource(normalizationContext:['groups' => ['read']],
+  itemOperations: ["get", "patch"=>["security"=>"is_granted('ROLE_ADMIN') or object == user"]]  
+)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
