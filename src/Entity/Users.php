@@ -8,9 +8,6 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-#[ApiResource(normalizationContext:['groups' => ['read']],
-  itemOperations: ["get", "patch"=>["security"=>"is_granted('ROLE_ADMIN') or object == user"]]  
-)]
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]

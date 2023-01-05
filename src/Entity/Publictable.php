@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(
     operations:[
         new Get(normalizationContext: ['groups' => 'publictable:item']),
+        new Get(normalizationContext: ['groups' => 'publictable:item2']),
         new GetCollection(normalizationContext: ['groups' => 'publictable:list'])
     ],
     order: ['score' => 'DESC']
@@ -23,7 +24,7 @@ class Publictable
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['publictable:list', 'publictable:item'])]
+    #[Groups(['publictable:list', 'publictable:item','publictable:item2'])]
     private ?int $id = null;
 
     #[ORM\Column]
